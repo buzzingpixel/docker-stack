@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+  web:
+    build: ./nginx
+    container_name: nginx-docker-stack
+    ports:
+      - "80:80"
+    volumes:
+      - .:/app
+      - ./nginx/site.conf:/etc/nginx/conf.d/site.conf

@@ -43,14 +43,21 @@ services:
 #    volumes:
 #      - .:/app
 #      - ./php5.5/php-custom-config.ini:/usr/local/etc/php/conf.d/php-custom-config.ini
-#      - ./php5.5/php-config-dev.ini:/usr/local/etc/php/conf.d/php-env-config.ini
+##      - ./php5.5/php-config-dev.ini:/usr/local/etc/php/conf.d/php-env-config.ini
+#  php:
+#    container_name: php-docker-stack
+#    build: ./php5.4
+#    volumes:
+#      - .:/app
+#      - ./php5.4/php-custom-config.ini:/usr/local/etc/php/conf.d/php-custom-config.ini
+#      - ./php5.4/php-config-dev.ini:/usr/local/etc/php/conf.d/php-env-config.ini
   php:
     container_name: php-docker-stack
-    build: ./php5.4
+    build: ./php5.3
     volumes:
       - .:/app
-      - ./php5.4/php-custom-config.ini:/usr/local/etc/php/conf.d/php-custom-config.ini
-      - ./php5.4/php-config-dev.ini:/usr/local/etc/php/conf.d/php-env-config.ini
+      - ./php5.3/php-custom-config.ini:/usr/local/etc/php/conf.d/php-custom-config.ini
+      - ./php5.3/php-config-dev.ini:/usr/local/etc/php/conf.d/php-env-config.ini
   db:
     build: ./mariadb
     container_name: db-docker-stack

@@ -9,3 +9,10 @@ services:
     volumes:
       - .:/app
       - ./nginx/site.conf:/etc/nginx/conf.d/site.conf
+  php:
+    container_name: php-docker-stack
+    build: ./php7.2
+    volumes:
+      - .:/app
+      - ./php7.2/php-custom-config.ini:/usr/local/etc/php/conf.d/php-custom-config.ini
+      - ./php7.2/php-config-dev.ini:/usr/local/etc/php/conf.d/php-env-config.ini

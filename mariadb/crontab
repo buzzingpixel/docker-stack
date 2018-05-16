@@ -1,0 +1,1 @@
+*/30 * * * * /usr/local/config/dbBackups.sh >/dev/null 2>&1

@@ -108,6 +108,7 @@ RUN set -ex ; \
         cron \
         git \
         libc-client2007e \
+        libicu-dev \
         libmagickwand-dev \
         libmcrypt4 \
         libmemcached11 \

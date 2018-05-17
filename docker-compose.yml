@@ -10,56 +10,62 @@ services:
     volumes:
       - .:/app
       - ./nginx/site.conf:/etc/nginx/conf.d/site.conf
-#  php:
+  php:
 #    build: ./php7.2
-#    container_name: php-docker-stack
-#    volumes:
-#      - .:/app
-#      - ./php7.2/php-custom-config.ini:/usr/local/etc/php/conf.d/php-custom-config.ini
-#      - ./php7.2/php-config-dev.ini:/usr/local/etc/php/conf.d/php-env-config.ini
+    image: buzzingpixel/php7.2:latest
+    container_name: php-docker-stack
+    volumes:
+      - .:/app
+      - ./php7.2/php-custom-config.ini:/usr/local/etc/php/conf.d/php-custom-config.ini
+      - ./php7.2/php-config-dev.ini:/usr/local/etc/php/conf.d/php-env-config.ini
 #  php:
-#    build: ./php7.1
+##    build: ./php7.1
+#    image: buzzingpixel/php7.1:latest
 #    container_name: php-docker-stack
 #    volumes:
 #      - .:/app
 #      - ./php7.1/php-custom-config.ini:/usr/local/etc/php/conf.d/php-custom-config.ini
 #      - ./php7.1/php-config-dev.ini:/usr/local/etc/php/conf.d/php-env-config.ini
 #  php:
-#    build: ./php7.0
+##    build: ./php7.0
+#    image: buzzingpixel/php7.0:latest
 #    container_name: php-docker-stack
 #    volumes:
 #      - .:/app
 #      - ./php7.0/php-custom-config.ini:/usr/local/etc/php/conf.d/php-custom-config.ini
 #      - ./php7.0/php-config-dev.ini:/usr/local/etc/php/conf.d/php-env-config.ini
 #  php:
-#    build: ./php5.6
+##    build: ./php5.6
+#    image: buzzingpixel/php5.6:latest
 #    container_name: php-docker-stack
 #    volumes:
 #      - .:/app
 #      - ./php5.6/php-custom-config.ini:/usr/local/etc/php/conf.d/php-custom-config.ini
 #      - ./php5.6/php-config-dev.ini:/usr/local/etc/php/conf.d/php-env-config.ini
 #  php:
-#    build: ./php5.5
+##    build: ./php5.5
+#    image: buzzingpixel/php5.5:latest
 #    container_name: php-docker-stack
 #    volumes:
 #      - .:/app
 #      - ./php5.5/php-custom-config.ini:/usr/local/etc/php/conf.d/php-custom-config.ini
 #      - ./php5.5/php-config-dev.ini:/usr/local/etc/php/conf.d/php-env-config.ini
 #  php:
-#    build: ./php5.4
+##    build: ./php5.4
+#    image: buzzingpixel/php5.4:latest
 #    container_name: php-docker-stack
 #    volumes:
 #      - .:/app
 #      - ./php5.4/php-custom-config.ini:/usr/local/etc/php/conf.d/php-custom-config.ini
 #      - ./php5.4/php-config-dev.ini:/usr/local/etc/php/conf.d/php-env-config.ini
-  php:
-#    build: ./php5.3
-    image: buzzingpixel/php5.3:latest
-    container_name: php-docker-stack
-    volumes:
-      - .:/app
-      - ./php5.3/php-custom-config.ini:/usr/local/etc/php/conf.d/php-custom-config.ini
-      - ./php5.3/php-config-dev.ini:/usr/local/etc/php/conf.d/php-env-config.ini
+#  php:
+##    build: ./php5.3
+#    image: buzzingpixel/php5.3:latest
+#    container_name: php-docker-stack
+#    volumes:
+#      - .:/app
+#      - ./php5.3/php-custom-config.ini:/usr/local/etc/php/conf.d/php-custom-config.ini
+#      - ./php5.3/php-config-dev.ini:/usr/local/etc/php/conf.d/php-env-config.ini
   db:
 #    build: ./mariadb
     image: buzzingpixel/mariadb:latest

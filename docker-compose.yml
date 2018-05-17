@@ -2,7 +2,8 @@ version: '3'
 
 services:
   web:
-    build: ./nginx
+#    build: ./nginx
+    image: buzzingpixel/nginx:latest
     container_name: nginx-docker-stack
     ports:
       - "80:80"
@@ -10,56 +11,58 @@ services:
       - .:/app
       - ./nginx/site.conf:/etc/nginx/conf.d/site.conf
 #  php:
-#    container_name: php-docker-stack
 #    build: ./php7.2
+#    container_name: php-docker-stack
 #    volumes:
 #      - .:/app
 #      - ./php7.2/php-custom-config.ini:/usr/local/etc/php/conf.d/php-custom-config.ini
 #      - ./php7.2/php-config-dev.ini:/usr/local/etc/php/conf.d/php-env-config.ini
 #  php:
-#    container_name: php-docker-stack
 #    build: ./php7.1
+#    container_name: php-docker-stack
 #    volumes:
 #      - .:/app
 #      - ./php7.1/php-custom-config.ini:/usr/local/etc/php/conf.d/php-custom-config.ini
 #      - ./php7.1/php-config-dev.ini:/usr/local/etc/php/conf.d/php-env-config.ini
 #  php:
-#    container_name: php-docker-stack
 #    build: ./php7.0
+#    container_name: php-docker-stack
 #    volumes:
 #      - .:/app
 #      - ./php7.0/php-custom-config.ini:/usr/local/etc/php/conf.d/php-custom-config.ini
 #      - ./php7.0/php-config-dev.ini:/usr/local/etc/php/conf.d/php-env-config.ini
 #  php:
-#    container_name: php-docker-stack
 #    build: ./php5.6
+#    container_name: php-docker-stack
 #    volumes:
 #      - .:/app
 #      - ./php5.6/php-custom-config.ini:/usr/local/etc/php/conf.d/php-custom-config.ini
 #      - ./php5.6/php-config-dev.ini:/usr/local/etc/php/conf.d/php-env-config.ini
 #  php:
-#    container_name: php-docker-stack
 #    build: ./php5.5
+#    container_name: php-docker-stack
 #    volumes:
 #      - .:/app
 #      - ./php5.5/php-custom-config.ini:/usr/local/etc/php/conf.d/php-custom-config.ini
-##      - ./php5.5/php-config-dev.ini:/usr/local/etc/php/conf.d/php-env-config.ini
+#      - ./php5.5/php-config-dev.ini:/usr/local/etc/php/conf.d/php-env-config.ini
 #  php:
-#    container_name: php-docker-stack
 #    build: ./php5.4
+#    container_name: php-docker-stack
 #    volumes:
 #      - .:/app
 #      - ./php5.4/php-custom-config.ini:/usr/local/etc/php/conf.d/php-custom-config.ini
 #      - ./php5.4/php-config-dev.ini:/usr/local/etc/php/conf.d/php-env-config.ini
   php:
+#    build: ./php5.3
+    image: buzzingpixel/php5.3:latest
     container_name: php-docker-stack
-    build: ./php5.3
     volumes:
       - .:/app
       - ./php5.3/php-custom-config.ini:/usr/local/etc/php/conf.d/php-custom-config.ini
       - ./php5.3/php-config-dev.ini:/usr/local/etc/php/conf.d/php-env-config.ini
   db:
-    build: ./mariadb
+#    build: ./mariadb
+    image: buzzingpixel/mariadb:latest
     container_name: db-docker-stack
     restart: always
     environment:

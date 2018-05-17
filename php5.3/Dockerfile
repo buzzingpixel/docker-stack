@@ -112,6 +112,7 @@ RUN set -ex ; \
         cron \
         git \
         libc-client2007e \
+        libicu-dev \
         libmagickwand-dev \
         libmcrypt4 \
         libmemcached11 \
@@ -175,6 +176,8 @@ RUN set -ex \
         echo 'error_log = /dev/stderr'; \
     } | tee /usr/local/etc/php/conf.d/php.ini \
     ;
+
+RUN rm /usr/local/etc/php/conf.d/docker-php-ext-iconv.ini
 
 EXPOSE 9000
 

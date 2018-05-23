@@ -1,6 +1,7 @@
 FROM helder/php-5.3 as builder
 
 COPY docker-php-ext-enable /usr/local/bin/
+RUN chmod +x /usr/local/bin/docker-php-ext-enable
 
 RUN set -ex; \
     \
@@ -111,6 +112,8 @@ RUN set -ex ; \
     apt-get update && apt-get install -y --no-install-recommends \
         cron \
         git \
+        ghostscript \
+        imagemagick \
         libc-client2007e \
         libicu-dev \
         libmagickwand-dev \

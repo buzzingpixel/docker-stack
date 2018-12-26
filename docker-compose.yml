@@ -5,63 +5,88 @@ services:
 #    build: ./nginx
     image: buzzingpixel/nginx:latest
     container_name: nginx-docker-stack
+    environment:
+      HOSTNAME: nginx-docker-stack
     ports:
       - "80:80"
     volumes:
       - .:/app
       - ./nginx/site.conf:/etc/nginx/conf.d/site.conf
   php:
-#    build: ./php7.2
-    image: buzzingpixel/php7.2:latest
+#    image: php:7.3-fpm
+    build: ./php7.3
+#    image: buzzingpixel/php7.3:latest
     container_name: php-docker-stack
+    environment:
+      HOSTNAME: php-docker-stack
     volumes:
       - .:/app
-      - ./php7.2/php-custom-config.ini:/usr/local/etc/php/conf.d/php-custom-config.ini
-      - ./php7.2/php-config-dev.ini:/usr/local/etc/php/conf.d/php-env-config.ini
 #  php:
-##    build: ./php7.1
-#    image: buzzingpixel/php7.1:latest
+#    build: ./php7.2
+##    image: buzzingpixel/php7.2:latest
 #    container_name: php-docker-stack
+#    environment:
+#      HOSTNAME: php-docker-stack
+#    volumes:
+#      - .:/app
+#      - ./php7.2/php-custom-config.ini:/usr/local/etc/php/conf.d/php-custom-config.ini
+#      - ./php7.2/php-config-dev.ini:/usr/local/etc/php/conf.d/php-env-config.ini
+#  php:
+#    build: ./php7.1
+##    image: buzzingpixel/php7.1:latest
+#    container_name: php-docker-stack
+#    environment:
+#      HOSTNAME: php-docker-stack
 #    volumes:
 #      - .:/app
 #      - ./php7.1/php-custom-config.ini:/usr/local/etc/php/conf.d/php-custom-config.ini
 #      - ./php7.1/php-config-dev.ini:/usr/local/etc/php/conf.d/php-env-config.ini
 #  php:
-##    build: ./php7.0
-#    image: buzzingpixel/php7.0:latest
+#    build: ./php7.0
+##    image: buzzingpixel/php7.0:latest
 #    container_name: php-docker-stack
+#    environment:
+#      HOSTNAME: php-docker-stack
 #    volumes:
 #      - .:/app
 #      - ./php7.0/php-custom-config.ini:/usr/local/etc/php/conf.d/php-custom-config.ini
 #      - ./php7.0/php-config-dev.ini:/usr/local/etc/php/conf.d/php-env-config.ini
 #  php:
-##    build: ./php5.6
-#    image: buzzingpixel/php5.6:latest
+#    build: ./php5.6
+##    image: buzzingpixel/php5.6:latest
 #    container_name: php-docker-stack
+#    environment:
+#      HOSTNAME: php-docker-stack
 #    volumes:
 #      - .:/app
 #      - ./php5.6/php-custom-config.ini:/usr/local/etc/php/conf.d/php-custom-config.ini
 #      - ./php5.6/php-config-dev.ini:/usr/local/etc/php/conf.d/php-env-config.ini
 #  php:
-##    build: ./php5.5
-#    image: buzzingpixel/php5.5:latest
+#    build: ./php5.5
+##    image: buzzingpixel/php5.5:latest
 #    container_name: php-docker-stack
+#    environment:
+#      HOSTNAME: php-docker-stack
 #    volumes:
 #      - .:/app
 #      - ./php5.5/php-custom-config.ini:/usr/local/etc/php/conf.d/php-custom-config.ini
 #      - ./php5.5/php-config-dev.ini:/usr/local/etc/php/conf.d/php-env-config.ini
 #  php:
-##    build: ./php5.4
-#    image: buzzingpixel/php5.4:latest
+#    build: ./php5.4
+##    image: buzzingpixel/php5.4:latest
 #    container_name: php-docker-stack
+#    environment:
+#      HOSTNAME: php-docker-stack
 #    volumes:
 #      - .:/app
 #      - ./php5.4/php-custom-config.ini:/usr/local/etc/php/conf.d/php-custom-config.ini
 #      - ./php5.4/php-config-dev.ini:/usr/local/etc/php/conf.d/php-env-config.ini
 #  php:
-##    build: ./php5.3
-#    image: buzzingpixel/php5.3:latest
+#    build: ./php5.3
+##    image: buzzingpixel/php5.3:latest
 #    container_name: php-docker-stack
+#    environment:
+#      HOSTNAME: php-docker-stack
 #    volumes:
 #      - .:/app
 #      - ./php5.3/php-custom-config.ini:/usr/local/etc/php/conf.d/php-custom-config.ini
@@ -72,6 +97,7 @@ services:
     container_name: db-docker-stack
     restart: always
     environment:
+      HOSTNAME: db-docker-stack
       MYSQL_ROOT_PASSWORD: root
       MYSQL_USER: secret
       MYSQL_DATABASE: site

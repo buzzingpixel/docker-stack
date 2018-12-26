@@ -87,8 +87,7 @@ function parse_git_branch () {
     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/ (\1)/';
 }
 
-# PS1="$Cyan$PathShort$Green\$(parse_git_branch)${NewLine}➜ $Color_Off ";
-PS1="${BGreen}\u@php-centsc: ${Cyan}\`pwd\`${Blue}$(parse_git_branch)${NewLine}${Green}➜ ${Color_Off} ";
+PS1="${BGreen}\u@${HOSTNAME}: ${Cyan}\`pwd\`${Blue}$(parse_git_branch)${NewLine}${Green}➜ ${Color_Off} ";
 
 
 

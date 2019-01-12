@@ -1,26 +1,26 @@
 version: '3'
 
 services:
-  web:
+#  web:
 #    build: ./nginx
-    image: buzzingpixel/nginx:latest
-    container_name: nginx-docker-stack
-    environment:
-      HOSTNAME: nginx-docker-stack
-    ports:
-      - "80:80"
-    volumes:
-      - .:/app
-      - ./nginx/site.conf:/etc/nginx/conf.d/site.conf
-  php:
-#    image: php:7.3-fpm
-    build: ./php7.3
-#    image: buzzingpixel/php7.3:latest
-    container_name: php-docker-stack
-    environment:
-      HOSTNAME: php-docker-stack
-    volumes:
-      - .:/app
+##    image: buzzingpixel/nginx:latest
+#    container_name: nginx-docker-stack
+#    environment:
+#      HOSTNAME: nginx-docker-stack
+#    ports:
+#      - "80:80"
+#    volumes:
+#      - .:/app
+#      - ./nginx/site.conf:/etc/nginx/conf.d/site.conf
+#  php:
+##    image: php:7.3-fpm
+#    build: ./php7.3
+##    image: buzzingpixel/php7.3:latest
+#    container_name: php-docker-stack
+#    environment:
+#      HOSTNAME: php-docker-stack
+#    volumes:
+#      - .:/app
 #  php:
 #    build: ./php7.2
 ##    image: buzzingpixel/php7.2:latest
@@ -91,20 +91,26 @@ services:
 #      - .:/app
 #      - ./php5.3/php-custom-config.ini:/usr/local/etc/php/conf.d/php-custom-config.ini
 #      - ./php5.3/php-config-dev.ini:/usr/local/etc/php/conf.d/php-env-config.ini
-  db:
+#  db:
 #    build: ./mariadb
-    image: buzzingpixel/mariadb:latest
-    container_name: db-docker-stack
-    restart: always
-    environment:
-      HOSTNAME: db-docker-stack
-      MYSQL_ROOT_PASSWORD: root
-      MYSQL_USER: secret
-      MYSQL_DATABASE: site
-      MYSQL_PASSWORD: secret
-    user: "1000:50"
+##    image: buzzingpixel/mariadb:latest
+#    container_name: db-docker-stack
+#    restart: always
+#    environment:
+#      HOSTNAME: db-docker-stack
+#      MYSQL_ROOT_PASSWORD: root
+#      MYSQL_USER: secret
+#      MYSQL_DATABASE: site
+#      MYSQL_PASSWORD: secret
+#    user: "1000:50"
+#    volumes:
+#      - .:/app
+#      - ./db:/var/lib/mysql
+#    ports:
+#      - "3306:3306"
+  utility:
+    build: ./utility
+    container_name: utility-docker-stack
     volumes:
       - .:/app
-      - ./db:/var/lib/mysql
-    ports:
-      - "3306:3306"
+    command: bash -c "sleep infinity & wait"

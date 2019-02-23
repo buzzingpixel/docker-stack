@@ -42,6 +42,7 @@ RUN set -ex; \
         libxml2-dev \
         libxpm-dev \
         libxslt1-dev \
+        libzip4 \
         libzip-dev \
         openssl \
         unzip \
@@ -84,40 +85,32 @@ RUN set -ex; \
         zip \
     ; \
     pecl install \
-        igbinary-2.0.8 \
+        igbinary-3.0.0 \
         imagick-3.4.3 \
         memcached-3.1.3 \
         msgpack-2.0.3 \
         redis-4.2.0 \
-        uopz-5.0.2 \
     ; \
-    echo "\n" | pecl install ssh2-1.1.2; \
+#    TODO: Enable this extension when it supports PHP 7.3
+#    echo "\n" | pecl install ssh2-1.1.2; \
     docker-php-ext-enable --ini-name pecl.ini \
         igbinary \
         imagick \
         memcached \
         msgpack \
         redis \
-        ssh2 \
-        uopz \
+#    TODO: Enable this extension when it supports PHP 7.3
+#        ssh2 \
     ;
 
-RUN set -ex; \
-    \
-    curl --connect-timeout 10 -o ioncube.tar.gz -fkSL "https://downloads.ioncube.com/loader_downloads/ioncube_loaders_lin_x86-64.tar.gz"; \
-    tar -zxvf ioncube.tar.gz; \
-    cp ioncube_loader_lin_7.3.so /usr/local/lib/php/extensions/no-debug-non-zts-20180731/ioncube.so; \
-    rm -Rf ioncube*; \
-    echo "zend_extension=ioncube.so" > /usr/local/etc/php/conf.d/01-ioncube.ini;
-
 # Install APCu extension
-ADD https://pecl.php.net/get/apcu-5.1.16.tgz /tmp/apcu.tar.gz
+ADD https://pecl.php.net/get/apcu-5.1.17.tgz /tmp/apcu.tar.gz
 RUN mkdir -p /usr/src/php/ext/apcu && tar xf /tmp/apcu.tar.gz -C /usr/src/php/ext/apcu --strip-components=1
 RUN docker-php-ext-configure apcu && docker-php-ext-install apcu
 RUN rm -rd /usr/src/php/ext/apcu && rm /tmp/apcu.tar.gz
 
 # Install APCu-BC extension
-ADD https://pecl.php.net/get/apcu_bc-1.0.4.tgz /tmp/apcu_bc.tar.gz
+ADD https://pecl.php.net/get/apcu_bc-1.0.5.tgz /tmp/apcu_bc.tar.gz
 RUN mkdir -p /usr/src/php/ext/apcu-bc && tar xf /tmp/apcu_bc.tar.gz -C /usr/src/php/ext/apcu-bc --strip-components=1
 RUN docker-php-ext-configure apcu-bc && docker-php-ext-install apcu-bc
 RUN rm -rd /usr/src/php/ext/apcu-bc && rm /tmp/apcu_bc.tar.gz
@@ -127,10 +120,10 @@ RUN rm /usr/local/etc/php/conf.d/docker-php-ext-apc.ini
 RUN echo extension=apc.so > /usr/local/etc/php/conf.d/21-php-ext-apc.ini
 
 # Install xdebug
-RUN pecl install xdebug-2.7.0beta1
+RUN pecl install xdebug-2.7.0RC2
 RUN docker-php-ext-enable xdebug
 
-# Now that all the modules are built/downloaded, use the original php:7.2-fpm image and
+# Now that all the modules are built/downloaded, use the original php:7.3-fpm image and
 # install only the runtime dependencies with the new modules and config files.
 FROM php:7.3-fpm
 
@@ -153,7 +146,6 @@ RUN set -ex ; \
         libwebp-dev \
         libxpm-dev \
         libxslt1.1 \
-        libzip-dev \
         ssmtp \
         sudo \
         libpng16-16 \

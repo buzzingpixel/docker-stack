@@ -41,3 +41,29 @@ phpinfo();
 // $link->query("INSERT INTO testTable (name) VALUES ('Johnny')");
 
 // var_dump($link->query("SELECT * FROM testTable"));
+
+/**
+ * Postegres
+ */
+
+// $pdo = new PDO('pgsql:host=db;port=5432', 'postgres', 'postgres');
+//
+// $pdo->exec('CREATE DATABASE site;');
+// $pdo->exec("CREATE USER site WITH ENCRYPTED PASSWORD 'secret';");
+// $pdo->exec('GRANT ALL PRIVILEGES ON DATABASE site TO site');
+//
+// var_dump($pdo);
+// die;
+
+///////////////////////////////////////
+
+// $pdo = new PDO('pgsql:host=db;port=5432;dbname=site', 'site', 'secret');
+
+// $createTable = $pdo->exec('CREATE TABLE test_table(ID serial PRIMARY KEY, name VARCHAR(50))');
+
+// $pdo->exec("INSERT INTO test_table (name) VALUES ('Johnny')");
+
+// $query = $pdo->query('SELECT ID, name FROM test_table')->fetch(PDO::FETCH_ASSOC);
+
+// var_dump($query);
+// die;

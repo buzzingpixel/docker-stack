@@ -3,7 +3,7 @@ FROM php:7.2-fpm as builder
 RUN set -ex; \
     \
     apt-get update; \
-    apt-get install -my --no-install-recommends \
+    apt-get install -myf --no-install-recommends \
         autoconf \
         build-essential \
         g++ \
@@ -36,6 +36,7 @@ RUN set -ex; \
         libssh2-1-dev \
         libssl-dev \
         libtinfo-dev \
+        libpq-dev \
         libtool \
         libwebp-dev \
         libxml2 \
@@ -70,7 +71,9 @@ RUN set -ex; \
         mbstring \
         mysqli \
         opcache \
+        pdo \
         pdo_mysql \
+        pdo_pgsql \
         shmop \
         soap \
         sockets \
@@ -137,7 +140,7 @@ WORKDIR /
 
 RUN set -ex ; \
     \
-    apt-get update && apt-get install -y --no-install-recommends \
+    apt-get update && apt-get install -myf --no-install-recommends \
         cron \
         git \
         ghostscript \
@@ -148,6 +151,7 @@ RUN set -ex ; \
         libmcrypt4 \
         libmemcached11 \
         libmemcachedutil2 \
+        libpq-dev \
         libvpx-dev \
         libwebp-dev \
         libxpm-dev \

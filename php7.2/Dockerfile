@@ -159,6 +159,7 @@ RUN set -ex ; \
         ssmtp \
         sudo \
         libpng16-16 \
+        unzip \
         ; \
     rm -rf /tmp/pear /usr/share/doc /usr/share/man /usr/lib/gcc /var/lib/apt/lists/*; \
     cd /usr/local/etc/php; \
@@ -211,6 +212,8 @@ RUN set -ex \
         echo 'error_log = /dev/stderr'; \
     } | tee /usr/local/etc/php/conf.d/php.ini \
     ;
+
+ENV COMPOSER_ALLOW_SUPERUSER=1
 
 EXPOSE 9000
 

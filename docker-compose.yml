@@ -20,16 +20,16 @@ services:
 #      HOSTNAME: php-docker-stack
 #    volumes:
 #      - .:/app
-#  php:
-##    build: ./php7.2
+  php:
+    build: ./php7.2
 #    image: buzzingpixel/php7.2:latest
-#    container_name: php-docker-stack
-#    environment:
-#      HOSTNAME: php-docker-stack
-#    volumes:
-#      - .:/app
-#      - ./php7.2/php-custom-config.ini:/usr/local/etc/php/conf.d/php-custom-config.ini
-#      - ./php7.2/php-config-dev.ini:/usr/local/etc/php/conf.d/php-env-config.ini
+    container_name: php-docker-stack
+    environment:
+      HOSTNAME: php-docker-stack
+    volumes:
+      - .:/app
+      - ./php7.2/php-custom-config.ini:/usr/local/etc/php/conf.d/php-custom-config.ini
+      - ./php7.2/php-config-dev.ini:/usr/local/etc/php/conf.d/php-env-config.ini
 #  php:
 #    build: ./php7.1
 ##    image: buzzingpixel/php7.1:latest
@@ -107,21 +107,21 @@ services:
 #      - ./db:/var/lib/mysql
 #    ports:
 #      - "3306:3306"
-  db:
-    build: ./postgres
-#    image: buzzingpixel/mariadb:latest
-#    image: postgres:latest
-    container_name: db-docker-stack
-    restart: always
-    environment:
-      HOSTNAME: db-docker-stack
-      POSTGRES_PASSWORD: postgres
-    volumes:
-      - .:/app
-      - ./db-postgres:/var/lib/postgresql/data
-#      - db-postgres-data:/var/lib/postgresql/data
-    ports:
-      - "5432:5432"
+#  db:
+#    build: ./postgres
+##    image: buzzingpixel/mariadb:latest
+##    image: postgres:latest
+#    container_name: db-docker-stack
+#    restart: always
+#    environment:
+#      HOSTNAME: db-docker-stack
+#      POSTGRES_PASSWORD: postgres
+#    volumes:
+#      - .:/app
+#      - ./db-postgres:/var/lib/postgresql/data
+##      - db-postgres-data:/var/lib/postgresql/data
+#    ports:
+#      - "5432:5432"
 #  utility:
 #    build: ./utility
 #    container_name: utility-docker-stack
